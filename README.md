@@ -42,13 +42,39 @@ sudo python3 setup.py install
 - `ls /dev/*` to find `ttyUSBx` for U2D2 connection. The `ttyUSBx` will appear when USB is connected and disappear when disconnected.
 - Use program editor to modify the code first
 - Set motor ID and communication speed set with Dynamixel Wizard
+## Class initialization with servo motor register addresses and values
+```
+        PROTOCOL_VERSION            = 2.0
+        self.ADDR_TORQUE_ENABLE     = 64
+        ADDR_LED_RED                = 65
+        ADDR_OPERATING_MODE         = 11
+        OP_VELOCITY_CTRL_MODE       = 1
+        self.ADDR_GOAL_VELOCITY     = 104
+        ADDR_VELOCITY_LIMIT         = 44
+        VELOCITY_LIMIT              = 265
+        self.ADDR_PRESENT_VELOCITY  = 128
+        LEN_LED_RED                 = 1
+        ADDR_GOAL_POSITION          = 116
+        LEN_GOAL_POSITION           = 4
+        ADDR_PRESENT_POSITION       = 132
+        LEN_PRESENT_POSITION        = 4
+        DXL_MINIMUM_POSITION_VALUE  = 0
+        DXL_MAXIMUM_POSITION_VALUE  = 4095
+        BAUDRATE                    = 57600
+```
 ## How to set a target position
+- Write to EEPROM for position mode. One time only as it is written at EEPROM, unless change from velocity mode.
 - Set up position first
 - Then start - Torque enable
 ## How to run at constant speed
+- Write to EEPROM for velocity mode. One time only as it is written at EEPROM, unless change from position mode.
 - Start first - Torque enable
-```dxl_comm_result, dxl_error = self.packetHandler.write1ByteTxRx(self.portHandler, self.DXL1_ID, self.ADDR_TORQUE_ENABLE, self.TORQUE_ENABLE)```
+```
+dxl_comm_result, dxl_error = self.packetHandler.write1ByteTxRx(self.portHandler, self.DXL1_ID, self.ADDR_TORQUE_ENABLE, self.TORQUE_ENABLE)
+```
 - Then set speed
-```dxl_comm_result, dxl_error = self.packetHandler.write4ByteTxRx(self.portHandler, self.DXL1_ID, self.ADDR_GOAL_VELOCITY, self.speedMotor1 * self.DXL1_orientation)```
+```
+dxl_comm_result, dxl_error = self.packetHandler.write4ByteTxRx(self.portHandler, self.DXL1_ID, self.ADDR_GOAL_VELOCITY, self.speedMotor1 * self.DXL1_orientation)
+```
 ## Group write for multiple motors
 
