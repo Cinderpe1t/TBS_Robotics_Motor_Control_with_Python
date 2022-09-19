@@ -77,4 +77,29 @@ dxl_comm_result, dxl_error = self.packetHandler.write1ByteTxRx(self.portHandler,
 dxl_comm_result, dxl_error = self.packetHandler.write4ByteTxRx(self.portHandler, self.DXL1_ID, self.ADDR_GOAL_VELOCITY, self.speedMotor1 * self.DXL1_orientation)
 ```
 ## Group write for multiple motors
+- Considering the number of motors and the communication speed, group write would not impact more than 1ms synchronization delay from individual write.
+- It is an interesting option to reduce package size when the number of motors scale up, or highly synchronized response is required
 
+## Test drive with keyboard input
+- It needs four motors connected
+- Motor setup should be modified at `dxl_4x_drive.py` in advance
+  - Motor ID's are 1 - 4
+  - Baud rate is 57600
+  - U2D@ USB port is `/dev/ttyUSB0`
+```
+        BAUDRATE      = 57600
+        self.DXL1_ID  = 1                 # Dynamixel#1 ID : 1
+        self.DXL2_ID  = 2                 # Dynamixel#1 ID : 2
+        self.DXL3_ID  = 3                 # Dynamixel#1 ID : 3
+        self.DXL4_ID  = 4                 # Dynamixel#1 ID : 4
+        DEVICENAME    = '/dev/ttyUSB0'
+```
+- `python3 TBS_4x_read_write_v3.py` to run keyboard based motor control
+- Keyboard control
+  - `1`: increase speed
+  - `2`: stop speed
+  - `3`: decrease speed
+  - `j`: left turn
+  - `k`: keep straight
+  - `l`: right turn
+  - `ESC`: exit
