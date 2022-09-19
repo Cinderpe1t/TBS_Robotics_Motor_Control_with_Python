@@ -81,7 +81,8 @@ dxl_comm_result, dxl_error = self.packetHandler.write4ByteTxRx(self.portHandler,
 - It is an interesting option to reduce package size when the number of motors scale up, or highly synchronized response is required
 
 ## Test drive with keyboard input
-- It needs four motors connected
+- The program runs on JETSON or RPi with monitor, keyboard, and mouse attached
+- It needs four motors connected to U2D2
 - Motor setup should be modified at `dxl_4x_drive.py` in advance
   - Motor ID's are 1 - 4
   - Baud rate is 57600
