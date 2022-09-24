@@ -33,7 +33,7 @@ or
 sudo python3 setup.py install
 ```
 - `sudo` command will ask you superuser password for installation
-- Make sure to run python3.x for install. Please do not mix up with python installation version and python you will run. If they are different, python will not be able to find the SDK library.
+- Make sure to run python3.x for install. Please do not mix up with python installation version and python you will run. If they are different, python will not be able to find the SDK library. In a certain system, `python` might point Python2.x, rather than Python3.x
 - Use `which python` or `which python3` to know the path to python
 - `python --version` or `python3 --version` will print the version
 ## Run a test program
