@@ -15,7 +15,7 @@ TBS Robotics Motor Control with Python
 - Document: https://emanual.robotis.com/docs/en/software/dynamixel/dynamixel_sdk/overview/
 - Download
   - Option 1: Download link, and extract at desired directory
-  - Option 2: Github at linux or unix (MacOS) terminal prompt
+  - Option 2: Github at Linux or Unix (MacOS) terminal prompt
     - Change to the desired directory
     - Use git command
 ```
